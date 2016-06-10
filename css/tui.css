@@ -1,7 +1,8 @@
 /*！
-*	12栏栅格系统
+*	tui
 *	(c)2016 3t
 *	Released under the MIT License.
+* 	Licensed under MIT (https://github.com/3tnet/tui.git)
 *	2016年6月2日21:37:40
 */
 /*栅格系统*/
@@ -16,18 +17,44 @@
     box-sizing: border-box;
     float: left;
 }
-.col-md-12{width:100%}
-.col-md-11{width:91.66666667%}
-.col-md-10{width:83.33333333%}
-.col-md-9{width:75%}
-.col-md-8{width:66.66666667%}
-.col-md-7{width:58.33333333%}
-.col-md-6{width:50%}
-.col-md-5{width:41.66666667%}
-.col-md-4{width:33.33333333%}
-.col-md-3{width:25%}
-.col-md-2{width:16.66666667%}
-.col-md-1{width:8.33333333%}
+/*不定宽度的水平垂直居中*/
+.center-wrapper{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+/*container*/
+.container {padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;}
+/*文本*/
+	/*单行文本溢出*/
+	.inaline{
+		overflow:hidden;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+	}
+	/*多行文本溢出*/
+	.intwoline{
+		display:-webkit-box!important;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		word-break:break-all;
+		-webkit-box-orient:vertical;
+		-webkit-line-clamp:3;/*控制溢出行数*/
+	}
+/*普通屏幕*/
+@media (min-width: 1001px){
+	/*栅格*/
+	.col-md-12{width:100%}
+	.col-md-11{width:91.66666667%}
+	.col-md-10{width:83.33333333%}
+	.col-md-9{width:75%}
+	.col-md-8{width:66.66666667%}
+	.col-md-7{width:58.33333333%}
+	.col-md-6{width:50%}
+	.col-md-5{width:41.66666667%}
+	.col-md-4{width:33.33333333%}
+	.col-md-3{width:25%}
+	.col-md-2{width:16.66666667%}
+	.col-md-1{width:8.33333333%}
+	/*container*/
+	.container{width: 970px;}
+}
 /*平板*/
 @media(min-width:768px) and (max-width: 1000px){
     .col-sm-12{width:100%}
@@ -42,6 +69,8 @@
     .col-sm-3{width:25%}
     .col-sm-2{width:16.66666667%}
     .col-sm-1{width:8.33333333%}
+	/*container*/
+	.container{width: 750px;}
 }
 /*手机*/
 @media(max-width:768px){
@@ -57,4 +86,6 @@
     .col-xs-3{width:25%}
     .col-xs-2{width:16.66666667%}
     .col-xs-1{width:8.33333333%}
+	/*container*/
+	.container{width:100%;}
 }
