@@ -54,6 +54,32 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
     border-right: 7px solid transparent;
     border-left: 7px solid transparent;
 }
+/*回到顶部*/
+.onTop{
+  width: 50px;
+  height:50px;
+  background-color:#54A2D5;
+  position: fixed;
+  bottom:50px;
+  right:50px;
+  padding:5px;
+  cursor: pointer;
+  box-sizing:border-box;
+  display: none;
+  opacity:.3;
+  transition:opacity .3s;
+}
+.onTop>span{
+  color:#fff;
+  width: 100%;
+  display: block;
+  font-family: "微软雅黑";
+  text-align: center;
+  line-height: 19px;
+}
+.onTop:hover{
+  opacity: 1;
+}
 /*栅格系统*/
 .col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12,
 .col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12,
