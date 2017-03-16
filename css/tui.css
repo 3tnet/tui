@@ -80,6 +80,77 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 .onTop:hover{
   opacity: 1;
 }
+/**
+* name:音乐动画ico
+*	html: 
+*		<div class="music_ico">
+*			<span></span>
+*			<i></i>
+*			<em></em>
+*		</div>
+*/
+.music_ico{
+	box-sizing: border-box;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 100;
+  border: solid 1px #fff;
+ 	border-radius: 20px;
+ 	padding: 5px;
+}
+.music_ico>i{
+	width: 100%;
+	display: block;
+	height: 100%;
+  background-size: 100% 100%;
+	background-image: url(../img/shopMusic.png);
+  -webkit-animation: music 1.5s infinite linear;
+}
+.music_ico>span{
+	position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background: url(../img/shopMusic.png) no-repeat 0 0;
+  background-size: 100% 100%;
+  opacity: 0.8;
+  -webkit-animation: music1 1.5s infinite linear;
+}
+.music_ico>em{
+	position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background: url(../img/shopMusic.png) no-repeat 0 0;
+  background-size: 100% 100%;
+  opacity: 0.8;
+  -webkit-animation: music2 1.5s infinite linear;
+}
+@-webkit-keyframes music
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(360deg);}
+}
+@-webkit-keyframes music1
+{
+	0%{-webkit-transform:rotate(0deg) translate(0,0); opacity:0;}
+	10%{-webkit-transform:rotate(0deg) translate(0,0); opacity:0;}
+	50%{-webkit-transform:rotate(15deg) translate(5px,-5px); opacity:0.8;}
+	100%{-webkit-transform:rotate(30deg) translate(10px,-10px); opacity:0;}
+}
+@-webkit-keyframes music2
+{
+	0%{-webkit-transform:rotate(0deg) translate(0,0); opacity:0;}
+	40%{-webkit-transform:rotate(0deg) translate(0,0); opacity:0;}
+	80%{-webkit-transform:rotate(-30deg) translate(7px,-7px); opacity:0.4;}
+	100%{-webkit-transform:rotate(-60deg) translate(14px,-14px); opacity:0;}
+}
+
 /*栅格系统*/
 .col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12,
 .col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12,
