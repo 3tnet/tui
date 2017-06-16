@@ -7,11 +7,16 @@
 */
 /*初始化*/
 body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}body,button,input,select,textarea{font:12px/1.5 tahoma,arial,"\5b8b\4f53";*line-height:1.5;-ms-overflow-style:scrollbar}h1,h2,h3,h4,h5,h6{font-size:100%}address,cite,dfn,em,var{font-style:normal}code,kbd,pre,samp{font-family:courier new,courier,monospace}small{font-size:12px}ul,ol{list-style:none}a{text-decoration:none}a:hover{text-decoration:underline}sup{vertical-align:text-top}sub{vertical-align:text-bottom}legend{color:#000}fieldset,img{border:0}button,input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}
+
 /*不定宽度的水平垂直居中*/
 .center-wrapper{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+
 /*container*/
 .container {padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;box-sizing: border-box;}
-@media (min-width: 1001px){
+@media (min-width: 1200px){
+	.container{width: 1170px;}
+}
+@media (min-width: 1001px) and (max-width: 1199px){
 	.container{width: 970px;}
 }
 @media(min-width:768px) and (max-width: 1000px){
@@ -20,13 +25,14 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 @media(max-width:768px){
 	.container{width:100%;}
 }
-/*文本*/
+
 /*单行文本溢出*/
 .inaline{
 	overflow:hidden;
 	white-space:nowrap;
 	text-overflow:ellipsis;
 }
+
 /*多行文本溢出*/
 .intwoline{
 	display:-webkit-box!important;
@@ -36,11 +42,12 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 	-webkit-box-orient:vertical;
 	-webkit-line-clamp:3;/*控制溢出行数*/
 }
-/*图片*/
+
 /*圆角图片*/
 .img-circle{
 	border-radius: 100%;
 }
+
 /*辅助类*/
 /*三角箭头*/
 .caret {
@@ -54,32 +61,7 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
     border-right: 7px solid transparent;
     border-left: 7px solid transparent;
 }
-/*回到顶部*/
-.onTop{
-  width: 50px;
-  height:50px;
-  background-color:#54A2D5;
-  position: fixed;
-  bottom:50px;
-  right:50px;
-  padding:5px;
-  cursor: pointer;
-  box-sizing:border-box;
-  display: none;
-  opacity:.3;
-  transition:opacity .3s;
-}
-.onTop>span{
-  color:#fff;
-  width: 100%;
-  display: block;
-  font-family: "微软雅黑";
-  text-align: center;
-  line-height: 19px;
-}
-.onTop:hover{
-  opacity: 1;
-}
+
 /**
 * name:音乐动画ico
 *	html: 
@@ -151,7 +133,95 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 	100%{-webkit-transform:rotate(-60deg) translate(14px,-14px); opacity:0;}
 }
 
+/*
+* 自定义单选复选
+* <label class="t-radio"><input checked type="radio" name="test">备选项</label>
+* <label class="t-radio"><input type="radio" name="test">备选项</label>
+*	<label class="t-checkbox"><input type="checkbox" name="checkbox">备选项</label>
+*	<label class="t-checkbox"><input type="checkbox" name="checkbox">备选项</label>
+*	
+*	单选框在label上加 t-radio 类
+*	复选框在label上加 t-checkbox 类
+*/
+.t-radio,
+.t-checkbox{
+	display: inline-block;
+  position: relative;
+  padding-left: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.t-radio:hover>input[type=radio]:before,
+.t-checkbox:hover>input[type=checkbox]:before{
+	border-color: #20a0ff;
+}
+.t-radio>input[type=radio],
+.t-checkbox>input[type=checkbox]{
+	width: 0;
+	height: 0;
+}
+.t-radio>input[type=radio]:before,
+.t-checkbox>input[type=checkbox]:before{
+	content: '';
+	position: absolute;
+  cursor: pointer;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+  border: 1px solid #bfcbd9;
+}
+.t-radio>input[type=radio]:before{
+	border-radius: 50%;
+}
+.t-checkbox>input[type=checkbox]:before{
+	border-radius: 5px;
+}
+.t-radio>input[type=radio]:after{
+	content: '';
+	position: absolute;
+  cursor: pointer;
+	top: 7px;
+	left: 7px;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50%;
+	transform: scale(0);
+	transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+}
+.t-checkbox>input[type=checkbox]:after{
+	box-sizing: content-box;
+  content: "";
+  border: 2px solid #fff;
+  border-left: 0;
+  border-top: 0;
+  height: 8px;
+  left: 7px;
+  position: absolute;
+  top: 3px;
+  transform: rotate(45deg) scaleY(0);
+  width: 4px;
+  transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+  transform-origin: center;
+}
+
+.t-radio>input[type=radio]:checked:before,
+.t-checkbox>input[type=checkbox]:checked:before{
+	background-color: #20a0ff;
+	border-color: #20a0ff;
+}
+.t-radio>input[type=radio]:checked:after{
+	transform: scale(1);
+}
+.t-checkbox>input[type=checkbox]:checked:after{
+	transform: rotate(45deg) scaleY(1);
+}
+
 /*栅格系统*/
+.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-xs-10,.col-lg-11,.col-lg-12,
 .col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12,
 .col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12,
 .col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12
@@ -163,7 +233,22 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
     box-sizing: border-box;
     float: left;
 }
-@media (min-width: 1001px){
+@media (min-width: 1200px){
+	/*栅格*/
+	.col-lg-12{width:100%}
+	.col-lg-11{width:91.66666667%}
+	.col-lg-10{width:83.33333333%}
+	.col-lg-9{width:75%}
+	.col-lg-8{width:66.66666667%}
+	.col-lg-7{width:58.33333333%}
+	.col-lg-6{width:50%}
+	.col-lg-5{width:41.66666667%}
+	.col-lg-4{width:33.33333333%}
+	.col-lg-3{width:25%}
+	.col-lg-2{width:16.66666667%}
+	.col-lg-1{width:8.33333333%}
+}
+@media (min-width: 1001px) and (max-width: 1199px){
 	/*栅格*/
 	.col-md-12{width:100%}
 	.col-md-11{width:91.66666667%}
@@ -179,36 +264,39 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 	.col-md-1{width:8.33333333%}
 }
 @media(min-width:768px) and (max-width: 1000px){
-    .col-sm-12{width:100%}
-    .col-sm-11{width:91.66666667%}
-    .col-sm-10{width:83.33333333%}
-    .col-sm-9{width:75%}
-    .col-sm-8{width:66.66666667%}
-    .col-sm-7{width:58.33333333%}
-    .col-sm-6{width:50%}
-    .col-sm-5{width:41.66666667%}
-    .col-sm-4{width:33.33333333%}
-    .col-sm-3{width:25%}
-    .col-sm-2{width:16.66666667%}
-    .col-sm-1{width:8.33333333%}
+  .col-sm-12{width:100%}
+  .col-sm-11{width:91.66666667%}
+  .col-sm-10{width:83.33333333%}
+  .col-sm-9{width:75%}
+  .col-sm-8{width:66.66666667%}
+  .col-sm-7{width:58.33333333%}
+  .col-sm-6{width:50%}
+  .col-sm-5{width:41.66666667%}
+  .col-sm-4{width:33.33333333%}
+  .col-sm-3{width:25%}
+  .col-sm-2{width:16.66666667%}
+  .col-sm-1{width:8.33333333%}
 }
 @media(max-width:768px){
-    .col-xs-12{width:100%}
-    .col-xs-11{width:91.66666667%}
-    .col-xs-10{width:83.33333333%}
-    .col-xs-9{width:75%}
-    .col-xs-8{width:66.66666667%}
-    .col-xs-7{width:58.33333333%}
-    .col-xs-6{width:50%}
-    .col-xs-5{width:41.66666667%}
-    .col-xs-4{width:33.33333333%}
-    .col-xs-3{width:25%}
-    .col-xs-2{width:16.66666667%}
-    .col-xs-1{width:8.33333333%}
+  .col-xs-12{width:100%}
+  .col-xs-11{width:91.66666667%}
+  .col-xs-10{width:83.33333333%}
+  .col-xs-9{width:75%}
+  .col-xs-8{width:66.66666667%}
+  .col-xs-7{width:58.33333333%}
+  .col-xs-6{width:50%}
+  .col-xs-5{width:41.66666667%}
+  .col-xs-4{width:33.33333333%}
+  .col-xs-3{width:25%}
+  .col-xs-2{width:16.66666667%}
+  .col-xs-1{width:8.33333333%}
 }
 
 /*响应式工具--hidden*/
-@media (min-width: 1001px){
+@media(max-width:1200px){
+	.hidden-lg{display:none;}
+}
+@media (min-width: 1001px) and (max-width: 1199px){
 	.hidden-md{display:none;}
 }
 @media(min-width:768px) and (max-width: 1000px){
@@ -217,8 +305,15 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 @media(max-width:768px){
 	.hidden-xs{display:none;}
 }
+
 /*响应式工具--visible*/
-@media (min-width: 1001px){
+@media (min-width: 1200px){
+	.visible-lg{display: block;}
+	.visible-lglg-block{display: block;}
+	.visible-lg-inline{display: inline;}
+	.visible-lg-inline-block{display: inline-block;}
+}
+@media (min-width: 1001px) and (max-width: 1199px){
 	.visible-md{display: block;}
 	.visible-md-block{display: block;}
 	.visible-md-inline{display: inline;}
@@ -238,7 +333,37 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 }
 
 /*响应式工具--push、pull*/
-@media (min-width: 1001px){
+@media (min-width: 1200px){
+	/*push*/
+	.col-lg-pull-12{right:100%}
+	.col-lg-pull-11{right:91.66666667%}
+	.col-lg-pull-10{right:83.33333333%}
+	.col-lg-pull-9{right:75%}
+	.col-lg-pull-8{right:66.66666667%}
+	.col-lg-pull-7{right:58.33333333%}
+	.col-lg-pull-6{right:50%}
+	.col-lg-pull-5{right:41.66666667%}
+	.col-lg-pull-4{right:33.33333333%}
+	.col-lg-pull-3{right:25%}
+	.col-lg-pull-2{right:16.66666667%}
+	.col-lg-pull-1{right:8.33333333%}
+	.col-lg-pull-0{right:auto}
+	/*push*/
+	.col-lg-push-12{left:100%}
+	.col-lg-push-11{left:91.66666667%}
+	.col-lg-push-10{left:83.33333333%}
+	.col-lg-push-9{left:75%}
+	.col-lg-push-8{left:66.66666667%}
+	.col-lglg-push-7{left:58.33333333%}
+	.col-lg-push-6{left:50%}
+	.col-lg-push-5{left:41.66666667%}
+	.col-lg-push-4{left:33.33333333%}
+	.col-lg-push-3{left:25%}
+	.col-lg-push-2{left:16.66666667%}
+	.col-lg-push-1{left:8.33333333%}
+}
+
+@media (min-width: 1001px) and (max-width: 1199px){
 	/*push*/
 	.col-md-pull-12{right:100%}
 	.col-md-pull-11{right:91.66666667%}
@@ -267,6 +392,7 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 	.col-md-push-2{left:16.66666667%}
 	.col-md-push-1{left:8.33333333%}
 }
+
 @media(min-width:768px) and (max-width: 1000px){
 	/*push*/
 	.col-sm-pull-12{right:100%}
@@ -296,6 +422,7 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 	.col-sm-push-2{left:16.66666667%}
 	.col-sm-push-1{left:8.33333333%}
 }
+
 @media(max-width:768px){
 	/*push*/
 	.col-xs-pull-12{right:100%}
@@ -325,4 +452,3 @@ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legen
 	.col-xs-push-2{left:16.66666667%}
 	.col-xs-push-1{left:8.33333333%}
 }
-
